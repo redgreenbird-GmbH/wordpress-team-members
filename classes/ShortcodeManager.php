@@ -2,7 +2,7 @@
 
 namespace RGBTeamMembers;
 
-class TeamMemberShortcodeManager
+class ShortcodeManager
 {
     function __construct()
     {

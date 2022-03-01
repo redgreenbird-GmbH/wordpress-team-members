@@ -3,7 +3,6 @@
 namespace RGBTeamMembers;
 
 /**
- * @copyright         2022 redgreenbird GmbH
  * Plugin Name:       Team Members
  * Plugin URI:        https://redgreenbird.com
  * Description:       This Plugin handles all Team Members. 
@@ -15,7 +14,9 @@ namespace RGBTeamMembers;
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Update URI:        https://redgreenbird.com
- * Text Domain:      $text_domain * Domain Path:       /languages
+ * Text Domain:       team-members
+ * Domain Path:       /languages
+ * @copyright         2022 redgreenbird GmbH
  */
 
 // Define File Path
@@ -28,4 +29,5 @@ foreach (glob(PLUGIN_PATH . "classes/*.php") as $filename) {
 
 // Initialize the Plugin
 $team_member_manager = new TeamMemberManager();
-$team_member_shortcode_manager = new TeamMemberShortcodeManager();
+$team_member_shortcode_manager = new ShortcodeManager();
+$team_member_post_type_manager = new PostTypeManager();
