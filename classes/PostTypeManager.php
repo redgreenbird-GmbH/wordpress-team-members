@@ -7,12 +7,8 @@ class PostTypeManager
     function __construct()
     {
         \add_action('init', [$this, 'custom_post_type']);
-        \add_action('add_meta_boxes', [$this, 'add_custom_data']);
-        \add_action('save_post', [$this, 'on_save']);
-
-        add_action('add_meta_boxes',  function () {
-            add_meta_box('profile', 'Profile', [$this, 'show_custom_editor']);
-        });
+        // \add_action('add_meta_boxes', [$this, 'add_custom_data']);
+        // \add_action('save_post', [$this, 'on_save']);
     }
 
     function custom_post_type()
@@ -54,7 +50,7 @@ class PostTypeManager
 
         $supports = [
             'title',
-            // 'editor',
+            'editor',
             'thumbnail',
             // 'custom-fields',
             // 'revisions',
@@ -106,32 +102,22 @@ class PostTypeManager
     // Handle on Save Event
     function on_save($post_id)
     {
-        $post_data = \get_post_meta($post_id, 'domicile', true);
+        // Domicile
+        // $post_data = \get_post_meta($post_id, 'domicile', true);
 
-        if ($post_data == null) {
-            \add_post_meta(
-                $post_id,
-                'domicile',
-                \sanitize_text_field($_POST['domicile']),
-                false,
-            );
-        } else {
-            \update_post_meta(
-                $post_id,
-                'domicile',
-                \sanitize_text_field($_POST['domicile']),
-            );
-        }
-    }
-
-    function show_custom_editor($post)
-    {
-        $text = get_post_meta($post, 'member-profile', true);
-
-        wp_editor(
-            htmlspecialchars($text),
-            'member-profile',
-            $settings = ['textarea_name' => 'MyInputNAME'],
-        );
+        // if ($post_data == null) {
+        //     \add_post_meta(
+        //         $post_id,
+        //         'domicile',
+        //         \sanitize_text_field($_POST['domicile']),
+        //         false,
+        //     );
+        // } else {
+        //     \update_post_meta(
+        //         $post_id,
+        //         'domicile',
+        //         \sanitize_text_field($_POST['domicile']),
+        //     );
+        // }
     }
 }

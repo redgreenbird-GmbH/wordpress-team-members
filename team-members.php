@@ -27,7 +27,28 @@ foreach (glob(PLUGIN_PATH . "classes/*.php") as $filename) {
     include($filename);
 }
 
+// Include Dependencies
+include_dependencies();
+
 // Initialize the Plugin
 $team_member_manager = new TeamMemberManager();
 $team_member_shortcode_manager = new ShortcodeManager();
 $team_member_post_type_manager = new PostTypeManager();
+
+
+function include_dependencies()
+{
+    // Bootstrap CSS
+    wp_register_style(
+        'prefix_bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'
+    );
+    wp_enqueue_style('prefix_bootstrap');
+
+    // Bootstrap JS
+    wp_register_script(
+        'prefix_bootstrap',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'
+    );
+    wp_enqueue_script('prefix_bootstrap');
+}
