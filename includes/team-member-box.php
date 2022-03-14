@@ -1,117 +1,81 @@
 <style>
-    body {
-        margin-top: 20px;
+    a:link {
+        text-decoration: none;
     }
 
-    .team-list img {
-        width: 50%;
+    .member-box {
+        /* width: 200px;
+        height: 200px; */
+        /* background-color: red; */
+        position: relative;
+        /* border: solid 1px #000000; */
+        padding-top: 40px;
+        padding-bottom: 50px;
+        transition: 0.3s;
     }
 
-    .team-list .content {
-        width: 50%;
+    .member-box:hover {
+        transform: scale(1.03);
     }
 
-    .team-list .content .follow {
-        position: absolute;
-        bottom: 24px;
+    .member-name-box {
+        width: 100%;
+        padding: 0 30px;
+        /* background-color: aquamarine; */
     }
 
-    .team-list:hover {
-        -webkit-transform: scale(1.05);
-        transform: scale(1.05);
+    .member-name {
+        font-size: 2.5rem;
+        color: black;
+        text-align: center;
+        margin: 0 !important;
     }
 
-    .team,
-    .team-list {
-        -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
-        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
-    }
+    .member-img-box {}
 
-    .team .content .title,
-    .team-list .content .title {
-        font-size: 18px;
-    }
-
-    .team .overlay {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0;
-        -webkit-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-    }
-
-    .team .member-position,
-    .team .team-social {
-        position: absolute;
-        bottom: -35px;
-        right: 0;
-        left: 0;
-        margin: auto 10%;
-        z-index: 99;
-    }
-
-    .team .team-social {
-        bottom: 40px;
-        opacity: 0;
-        -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
-        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0s;
-    }
-
-    .team:hover {
-        -webkit-transform: translateY(-7px);
-        transform: translateY(-7px);
-        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-    }
-
-    .team:hover .overlay {
-        opacity: 0.6;
-    }
-
-    .team:hover .team-social {
-        opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-
-        .team-list img,
-        .team-list .content {
-            width: 100%;
-            float: none !important;
-        }
-
-        .team-list img .follow,
-        .team-list .content .follow {
-            position: relative;
-            bottom: 0;
-        }
-    }
-
-    .rounded {
-        border-radius: 5px !important;
-    }
-
-    .para-desc {
-        max-width: 600px;
-    }
-
-    .text-muted {
-        color: #8492a6 !important;
-    }
-
-    .section-title .title {
-        letter-spacing: 0.5px;
-        font-size: 30px;
+    .member-img {
+        object-fit: cover;
+        padding: 10px;
+        border-radius: 100%;
+        margin: auto;
+        width: 200px;
+        height: 200px;
     }
 </style>
-<div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
-    <div class="team text-center rounded p-3 py-4">
-        <img src="<?php echo $thumbnail ?>" class="img-fluid avatar avatar-medium shadow rounded-pill" alt="">
-        <div class="content mt-3">
-            <h4 class="title mb-0"><?php echo $name ?></h4>
+
+
+<div class="row">
+
+    <?php
+
+    foreach ($posts as $post) {
+        // var_dump($post);
+        $name = $post->post_title;
+        $profile = $post->post_content;
+        $thumbnail =
+            wp_get_attachment_image_src(
+                get_post_thumbnail_id($post->ID),
+                'single-post-thumbnail'
+            )[0]
+            ?? null;
+    ?>
+
+        <div class="col-md-4 gy-3 gx-4 ">
+            <div class="member-box shadow">
+                <a href="">
+                    <div class="member-img-box">
+                        <img src="<?php echo $thumbnail ?>" class="member-img" alt="">
+                    </div>
+
+                    <div class="member-name-box">
+                        <h4 class="member-name"><?php echo $name ?></h4>
+                    </div>
+                </a>
+            </div>
         </div>
-    </div>
+
+    <?php
+    }
+    ?>
+
 </div>

@@ -30,25 +30,7 @@ class ShortcodeManager
             // 'order'    => 'ASC'
         ]);
 
-        // Container
-        echo '<div class="container">';
-        echo '<div class="row">';
-
-        foreach ($posts as $post) {
-            // var_dump($post);
-            $name = $post->post_title;
-            $profile = $post->post_content;
-            $thumbnail =
-                wp_get_attachment_image_src(
-                    get_post_thumbnail_id($post->ID),
-                    'single-post-thumbnail'
-                )[0];
-
-            include(\PLUGIN_PATH . 'includes/team-member-box.php');
-        }
-
-        echo '</div>';
-        echo '</div>';
+        include(\PLUGIN_PATH . 'includes/team-member-box.php');
 
         return $return;
     }
