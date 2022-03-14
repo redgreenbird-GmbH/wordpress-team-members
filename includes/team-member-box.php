@@ -62,7 +62,11 @@
 
         <div class="col-md-4 gy-3 gx-4 ">
             <div class="member-box shadow">
-                <a href="">
+                <a href='javascript: showModal(" 
+                    <?php echo $name ?>", 
+                    "<?php echo $profile ?>" , 
+                    "<?php echo $thumbnail ?>" 
+                );'>
                     <div class="member-img-box">
                         <img src="<?php echo $thumbnail ?>" class="member-img" alt="">
                     </div>
@@ -78,4 +82,34 @@
     }
     ?>
 
+</div>
+
+<script>
+    function showModal(name, profile, image) {
+        jQuery('#name').html(name);
+        jQuery('#profile').html(profile);
+        jQuery('#thumbnail').attr("src", image);
+
+        jQuery('#myModal').modal('show');
+    }
+
+    function closeModal() {
+        jQuery('#myModal').modal('hide');
+    }
+</script>
+
+<!--  -->
+<div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="thumbnail" class="member-img">
+                <h4 class="modal-title member-name" id="name">Name</h4>
+                <p id="profile">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="closeModal()">Schliessen</button>
+            </div>
+        </div>
+    </div>
 </div>
