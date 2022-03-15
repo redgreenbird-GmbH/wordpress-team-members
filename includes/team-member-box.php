@@ -12,6 +12,8 @@
         padding-top: 40px;
         padding-bottom: 50px;
         transition: 0.3s;
+        cursor: pointer;
+        height: 380px;
     }
 
     .member-box:hover {
@@ -25,21 +27,29 @@
     }
 
     .member-name {
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: black;
         text-align: center;
         margin: 0 !important;
     }
 
-    .member-img-box {}
+    .member-img-box {
+        display: flex;
+    }
 
     .member-img {
         object-fit: cover;
-        padding: 10px;
-        border-radius: 100%;
-        margin: auto;
-        width: 200px;
-        height: 200px;
+        /* padding: 10px; */
+        margin: 10px auto;
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    /* Modal */
+    .modal-body {}
+
+    .modal-dialog {
+        margin-top: 120px;
     }
 </style>
 
@@ -58,23 +68,28 @@
                 'single-post-thumbnail'
             )[0]
             ?? null;
+
+        // $profile = "Hey hallo
+        // wie geht es dir
+
+        // mann ok";
     ?>
 
         <div class="col-md-4 gy-3 gx-4 ">
-            <div class="member-box shadow">
-                <a href='javascript: showModal(" 
-                    <?php echo $name ?>", 
-                    "<?php echo $profile ?>" , 
-                    "<?php echo $thumbnail ?>" 
+            <div class="member-box shadow" onclick='
+                showModal(
+                    " <?php echo $name ?>", 
+                    <?php echo json_encode($profile) ?>, 
+                    "<?php echo $thumbnail ?>"
                 );'>
-                    <div class="member-img-box">
-                        <img src="<?php echo $thumbnail ?>" class="member-img" alt="">
-                    </div>
 
-                    <div class="member-name-box">
-                        <h4 class="member-name"><?php echo $name ?></h4>
-                    </div>
-                </a>
+                <div class="member-img-box">
+                    <img src="<?php echo $thumbnail ?>" class="member-img rounded-circle shadow-sm" alt="">
+                </div>
+
+                <div class="member-name-box">
+                    <h4 class="member-name"><?php echo $name ?></h4>
+                </div>
             </div>
         </div>
 
@@ -86,10 +101,9 @@
 
 <script>
     function showModal(name, profile, image) {
-        jQuery('#name').html(name);
+        jQuery(' #name').html(name);
         jQuery('#profile').html(profile);
         jQuery('#thumbnail').attr("src", image);
-
         jQuery('#myModal').modal('show');
     }
 
@@ -103,7 +117,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <img id="thumbnail" class="member-img">
+                <div class="member-img-box">
+                    <img id="thumbnail" class="member-img rounded-circle shadow-sm">
+                </div>
                 <h4 class="modal-title member-name" id="name">Name</h4>
                 <p id="profile">Modal body text goes here.</p>
             </div>
