@@ -12,6 +12,9 @@ class ShortcodeManager
 
     function team_member_list_shortcode($params, $content = "")
     {
+        $return = '';
+
+        // Handle Attributes
         $atts = \shortcode_atts(
             [
                 'case' => 'lowercase',
@@ -19,10 +22,16 @@ class ShortcodeManager
             $params
         );
 
-        if ($atts['case'] == 'lowercase') {
-            $content = strtolower($content);
-        }
+        // Get all Posts
+        $posts = get_posts([
+            'post_type' => 'team-members',
+            'post_status' => 'publish',
+            'numberposts' => -1
+            // 'order'    => 'ASC'
+        ]);
 
-        return "<h1>{$content}</h1>";
+        include(\PLUGIN_PATH . 'includes/team-member-list-template.php');
+
+        return $return;
     }
 }

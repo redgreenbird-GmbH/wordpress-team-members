@@ -7,12 +7,8 @@ class PostTypeManager
     function __construct()
     {
         \add_action('init', [$this, 'custom_post_type']);
-        \add_action('add_meta_boxes', [$this, 'add_custom_data']);
-        \add_action('save_post', [$this, 'on_save']);
-
-        add_action('add_meta_boxes',  function () {
-            add_meta_box('profile', 'Profile', [$this, 'my_output_function']);
-        });
+        // \add_action('add_meta_boxes', [$this, 'add_custom_data']);
+        // \add_action('save_post', [$this, 'on_save']);
     }
 
     function custom_post_type()
@@ -54,8 +50,8 @@ class PostTypeManager
 
         $supports = [
             'title',
-            // 'editor',
-            // 'thumbnail',
+            'editor',
+            'thumbnail',
             // 'custom-fields',
             // 'revisions',
         ];
@@ -97,32 +93,31 @@ class PostTypeManager
 
     function generate_meta_fields()
     {
-        include(\PLUGIN_PATH . "html/meta-box-form.html");
+        $post_id = $_GET['post'];
+        $domicile_value = \get_post_meta($post_id, 'domicile', true);
+
+        include(\PLUGIN_PATH . "html/meta-box-form.php");
     }
 
     // Handle on Save Event
     function on_save($post_id)
     {
-        /* global $post;
+        // Domicile
+        // $post_data = \get_post_meta($post_id, 'domicile', true);
 
-        \add_post_meta(
-            $post->ID,
-            'name',
-            'Name',
-            false,
-        );
-
-        \update_post_meta(
-            $post->ID,
-            'name',
-            \sanitize_text_field($_POST['name']),
-        ); */
-    }
-
-    function my_output_function($post)
-    {
-        $text = get_post_meta($post, 'SMTH_METANAME', true);
-
-        wp_editor(htmlspecialchars($text), 'mettaabox_ID', $settings = array('textarea_name' => 'MyInputNAME'));
+        // if ($post_data == null) {
+        //     \add_post_meta(
+        //         $post_id,
+        //         'domicile',
+        //         \sanitize_text_field($_POST['domicile']),
+        //         false,
+        //     );
+        // } else {
+        //     \update_post_meta(
+        //         $post_id,
+        //         'domicile',
+        //         \sanitize_text_field($_POST['domicile']),
+        //     );
+        // }
     }
 }
