@@ -51,4 +51,11 @@ function include_dependencies()
         'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'
     );
     wp_enqueue_script('prefix_bootstrap');
+
+    // Own CSS
+    wp_register_style(
+        'team_members',
+        \PLUGIN_PATH . 'css/team-member.css'
+    );
+    wp_enqueue_style('team_members');
 }
