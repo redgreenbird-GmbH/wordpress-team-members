@@ -30,7 +30,7 @@ class ShortcodeManager
             // 'order'    => 'ASC'
         ]);
 
-        include(\PLUGIN_PATH . 'includes/team-member-box.php');
+        include(\PLUGIN_PATH . 'includes/team-member-list-template.php');
 
         return $return;
     }

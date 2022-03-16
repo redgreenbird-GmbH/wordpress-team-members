@@ -21,6 +21,7 @@ namespace RGBTeamMembers;
 
 // Define File Path
 define('PLUGIN_PATH', dirname(__FILE__) . "/");
+define('PLUGIN_HTTP_PATH', plugin_dir_url(__FILE__));
 
 // Import all classes
 foreach (glob(PLUGIN_PATH . "classes/*.php") as $filename) {
@@ -54,8 +55,8 @@ function include_dependencies()
 
     // Own CSS
     wp_register_style(
-        'team_members',
-        \PLUGIN_PATH . 'css/team-member.css'
+        'team-member',
+        \PLUGIN_HTTP_PATH . 'public/css/team-member.css'
     );
-    wp_enqueue_style('team_members');
+    wp_enqueue_style('team-member');
 }
