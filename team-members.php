@@ -13,11 +13,10 @@ namespace RGBTeamMembers;
  * Author URI:        https://redgreenbird.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Update URI:        https://redgreenbird.com
+ * Update URI:        https://github.com/redgreenbird-media/wordpress-team-members
  * Text Domain:       team-members
  * Domain Path:       /languages
  * @copyright         2022 redgreenbird GmbH
- * GitHub Plugin URI: https://github.com/redgreenbird-media/wordpress-team-members.git
  */
 
 // Define File Path
