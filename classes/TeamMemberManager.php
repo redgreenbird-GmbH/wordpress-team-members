@@ -13,7 +13,7 @@ class TeamMemberManager
     {
         if (is_admin()) {
             // Initialize Actions
-            \add_action('admin_menu', [$this, 'set_option_page']);
+            // \add_action('admin_menu', [$this, 'set_option_page']);
         }
     }
 

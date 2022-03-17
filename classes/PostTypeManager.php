@@ -61,7 +61,7 @@ class PostTypeManager
             'description'           => __("{$single_name} Description", $text_domain),
             'labels'                => $labels,
             'supports'              => $supports,
-            'taxonomies'            => ['category', 'post_tag'],
+            'taxonomies'            => [/* 'category', 'post_tag' */],
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,

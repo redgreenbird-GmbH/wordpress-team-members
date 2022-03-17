@@ -22,8 +22,6 @@ class ShortcodeManager
             $params
         );
 
-        \var_dump($atts['rounded']);
-
         // Get all Posts
         $posts = get_posts([
             'post_type' => 'team-members',
