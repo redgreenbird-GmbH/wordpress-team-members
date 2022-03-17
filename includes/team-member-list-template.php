@@ -20,7 +20,7 @@
     ?>
 
         <div class="col-md-4 gy-3 gx-4 ">
-            <div class="member-box shadow" onclick='
+            <div class="member-box shadow member-round-corners" onclick='
                 showModal(
                     " <?php echo $name ?>", 
                     <?php echo json_encode($profile) ?>, 
@@ -57,18 +57,21 @@
 </script>
 
 <!--  -->
-<div class="modal" tabindex="-1" role="dialog" id="myModal">
+<div class="modal fade-in-down" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
+        <div class="modal-content member-round-corners pb-2">
+            <div class="modal-body pb-5">
                 <div class="member-img-box">
                     <img id="thumbnail" class="member-img rounded-circle shadow-sm">
                 </div>
                 <h4 class="modal-title member-name" id="name">Name</h4>
                 <p id="profile">Modal body text goes here.</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="closeModal()">Schliessen</button>
+
+            <div class="row">
+                <div class="col"></div>
+                <button type="button" class="btn col-6" onclick="closeModal()">Schliessen</button>
+                <div class="col"></div>
             </div>
         </div>
     </div>
