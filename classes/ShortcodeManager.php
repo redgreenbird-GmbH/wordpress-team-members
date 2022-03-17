@@ -17,17 +17,19 @@ class ShortcodeManager
         // Handle Attributes
         $atts = \shortcode_atts(
             [
-                'case' => 'lowercase',
+                'rounded' => 1, // bool
             ],
             $params
         );
+
+        \var_dump($atts['rounded']);
 
         // Get all Posts
         $posts = get_posts([
             'post_type' => 'team-members',
             'post_status' => 'publish',
-            'numberposts' => -1
-            // 'order'    => 'ASC'
+            'numberposts' => -1,
+            'order'    => 'ASC'
         ]);
 
         include(\PLUGIN_PATH . 'includes/team-member-list-template.php');

@@ -20,7 +20,7 @@
     ?>
 
         <div class="col-md-4 gy-3 gx-4 ">
-            <div class="member-box shadow member-round-corners" onclick='
+            <div class="member-box shadow <?php if ($atts['rounded']) echo 'member-round-corners'; ?>" onclick='
                 showModal(
                     " <?php echo $name ?>", 
                     <?php echo json_encode($profile) ?>, 
@@ -59,7 +59,7 @@
 <!--  -->
 <div class="modal fade-in-down" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog" role="document">
-        <div class="modal-content member-round-corners pb-2">
+        <div class="modal-content pb-2 <?php if ($atts['rounded']) echo 'member-round-corners'; ?>">
             <div class="modal-body pb-5">
                 <div class="member-img-box">
                     <img id="thumbnail" class="member-img rounded-circle shadow-sm">

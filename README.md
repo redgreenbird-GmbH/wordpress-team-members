@@ -1,5 +1,12 @@
 # WordPress Team Members Plugin
 
 ## Shortcodes
-List all Team Members
-- [team_member_list]
+
+`[team_member_list]`
+List all Team Members <br>
+Parameters
+- rounded=0/1 
+
+___
+made with 💓 by [@redgreenbird](https://redgreenbird.com)
+
