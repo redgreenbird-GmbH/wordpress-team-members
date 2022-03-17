@@ -16,7 +16,6 @@ namespace RGBTeamMembers;
  * Update URI:        https://github.com/redgreenbird-media/wordpress-team-members
  * Text Domain:       team-members
  * Domain Path:       /languages
- * @copyright         2022 redgreenbird GmbH
  */
 
 // Define File Path
