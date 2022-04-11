@@ -6,7 +6,7 @@ namespace RGBTeamMembers;
  * Plugin Name:       Team Members
  * Plugin URI:        https://github.com/redgreenbird-media/wordpress-team-members
  * Description:       This Plugin handles all Team Members. 
- * Version:           1.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            redgreenbird GmbH
