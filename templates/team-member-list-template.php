@@ -11,7 +11,7 @@
                 get_post_thumbnail_id($post->ID),
                 'single-post-thumbnail'
             )[0]
-            ?? null;
+            ?? PLUGIN_HTTP_PATH . 'public/images/empty_profile_picture.jpg';
 
         // $profile = "Hey hallo
         // wie geht es dir
