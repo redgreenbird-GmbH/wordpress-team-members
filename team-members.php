@@ -6,7 +6,7 @@ namespace RGBTeamMembers;
  * Plugin Name:       Team Members
  * Plugin URI:        https://github.com/redgreenbird-media/wordpress-team-members
  * Description:       This Plugin handles all Team Members. 
- * Version:           1.0
+ * Version:           1.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            redgreenbird GmbH
@@ -59,3 +59,16 @@ function include_dependencies()
     );
     wp_enqueue_style('team-member');
 }
+
+// Update checker
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/redgreenbird-media/wordpress-team-members.git',
+    __FILE__,
+    'team-members'
+);
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
+
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
