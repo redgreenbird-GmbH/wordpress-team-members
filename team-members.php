@@ -30,6 +30,14 @@ foreach (glob(PLUGIN_PATH . "classes/*.php") as $filename) {
 // Include Dependencies
 include_dependencies();
 
+// This filter hinders the rendering process of line breaks
+add_filter('tiny_mce_before_init', function ($options) {
+    $options['wpautop'] = false;
+    return $options;
+});
+remove_filter('the_content', 'wpautop');
+remove_filter('the_excerpt', 'wpautop');
+
 // Initialize the Plugin
 $team_member_manager = new TeamMemberManager();
 $team_member_shortcode_manager = new ShortcodeManager();
