@@ -19,8 +19,10 @@ namespace RGBTeamMembers;
  */
 
 // Define File Path
-define('PLUGIN_PATH', dirname(__FILE__) . "/");
-define('PLUGIN_HTTP_PATH', plugin_dir_url(__FILE__));
+if (!\defined('PLUGIN_PATH'))
+    define('PLUGIN_PATH', dirname(__FILE__) . "/");
+if (!\defined('PLUGIN_HTTP_PATH'))
+    define('PLUGIN_HTTP_PATH', plugin_dir_url(__FILE__));
 
 // Import all classes
 foreach (glob(PLUGIN_PATH . "classes/*.php") as $filename) {
